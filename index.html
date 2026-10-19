@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VivaX - AI-Powered Laboratory Viva Examination Platform</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --bg-color: #F9FAFB;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: var(--white);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #1F2937;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Features */
+        .features {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border: 1px solid #E5E7EB;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: #EEF2FF;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1F2937;
+            color: #9CA3AF;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">🎯 VivaX</a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#benefits">Benefits</a>
+            <a href="frontend/login.html" class="btn btn-outline">Login</a>
+            <a href="frontend/login.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>AI-Powered Laboratory Viva Examination Platform</h1>
+        <p>Conduct, manage and analyze laboratory viva examinations through a unified, secure digital platform. Empowering teachers and students with real-time assessments.</p>
+        <div class="hero-buttons">
+            <a href="frontend/login.html" class="btn btn-primary">Login to Dashboard</a>
+            <a href="#features" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">A Complete Examination Ecosystem</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">⏱️</div>
+                <h3>Scheduled & Timed Exams</h3>
+                <p>Strict server-side validated timers ensure examinations are taken exactly when scheduled and automatically submitted upon expiry.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Real-time Analytics</h3>
+                <p>Comprehensive dashboard for both students and teachers to track performance, identify weak areas, and monitor class mastery.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Role-Based Security</h3>
+                <p>Secure JWT authentication ensures strict separation between student and teacher access, protecting exam integrity.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3>Question Banks</h3>
+                <p>Teachers can build extensive question repositories with support for multiple formats, difficulty levels, and topics.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="features" style="background-color: var(--white); max-width: 100%; padding-top: 5rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Designed for Excellence</h2>
+            <div class="grid">
+                <div class="card" style="border-top: 4px solid var(--primary);">
+                    <h3 style="color: var(--primary);">👨‍🎓 For Students</h3>
+                    <ul style="list-style: none; color: var(--text-muted); margin-top: 1rem;">
+                        <li style="margin-bottom: 0.8rem;">✓ Clear visibility of upcoming tests</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Distraction-free examination interface</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Instant grading and performance feedback</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Topic-wise strength and weakness analysis</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-top: 4px solid #10B981;">
+                    <h3 style="color: #10B981;">👨‍🏫 For Teachers</h3>
+                    <ul style="list-style: none; color: var(--text-muted); margin-top: 1rem;">
+                        <li style="margin-bottom: 0.8rem;">✓ Streamlined viva creation and scheduling</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Automated objective grading</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Class-wide performance analytics</li>
+                        <li style="margin-bottom: 0.8rem;">✓ Centralized student management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero" style="background: var(--primary); color: white; padding: 4rem 5%;">
+        <h2 style="color: white; margin-bottom: 1.5rem; font-size: 2.5rem;">Ready to transform your lab assessments?</h2>
+        <a href="frontend/login.html" class="btn btn-outline" style="background: white; color: var(--primary); border: none;">Access the Platform</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 VivaX - AI-Powered Laboratory Viva Examination & Assessment Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

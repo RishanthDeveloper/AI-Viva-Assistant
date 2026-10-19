@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - VivaX</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                🎯 TESTHUB
+            </div>
+            <div class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">📊 Dashboard</a>
+                <a href="#" class="nav-item">📋 My Vivas</a>
+                <a href="#" class="nav-item">📈 Reports</a>
+                <a href="#" class="nav-item">👤 Profile</a>
+                <a href="#" class="nav-item" onclick="logout(); return false;">🚪 Logout</a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="topbar">
+                <div class="topbar-left"></div>
+                <div class="topbar-right">
+                    <div class="profile-circle" id="profile-initial">P</div>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="welcome-banner">
+                    <h1>Welcome back, <span id="user-name-banner">Teacher</span>! 👋</h1>
+                    <p>Here is an overview of your vivas.</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card card-purple">
+                        <h2 id="total-vivas">0</h2>
+                        <p>TOTAL VIVAS</p>
+                    </div>
+                    <div class="stat-card card-green">
+                        <h2 id="published-vivas">0</h2>
+                        <p>PUBLISHED</p>
+                    </div>
+                    <div class="stat-card card-pink">
+                        <h2 id="total-submissions">0</h2>
+                        <p>SUBMISSIONS</p>
+                    </div>
+                    <div class="stat-card card-blue">
+                        <h2 id="avg-score">0%</h2>
+                        <p>AVG SCORE</p>
+                    </div>
+                </div>
+                
+                <div class="recent-tests">
+                    <h3>Recent Submissions</h3>
+                    <div class="test-list" id="recent-submissions-container">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/teacher.js"></script>
+</body>
+</html>
