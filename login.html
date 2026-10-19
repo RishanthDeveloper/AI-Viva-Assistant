@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VivaX - Login</title>
+    <style>
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #F3F4F6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 16px; box-sizing: border-box; }
+        .login-box { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { margin: 0 0 20px; color: #4F46E5; text-align: center; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 15px; }
+        button { width: 100%; padding: 10px; background: #4F46E5; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        button:disabled { background: #A5B4FC; cursor: not-allowed; }
+        .msg { display: none; padding: 10px 12px; border-radius: 6px; font-size: 14px; margin-bottom: 15px; }
+        .msg.error { display: block; background: #FEE2E2; color: #991B1B; }
+        .msg.info { display: block; background: #E0E7FF; color: #3730A3; }
+        .msg.ok { display: block; background: #D1FAE5; color: #065F46; }
+    </style>
+</head>
+<body>
+    <form class="login-box" id="login-form" novalidate>
+        <h2>TESTHUB VivaX</h2>
+        <div id="status" class="msg"></div>
+        <input type="email" id="email" placeholder="Email (e.g. student@test.com)" value="student@test.com" autocomplete="username">
+        <input type="password" id="password" placeholder="Password" value="password" autocomplete="current-password">
+        <button type="submit" id="login-btn">Login</button>
+    </form>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        const statusEl = document.getElementById('status');
+        const btn = document.getElementById('login-btn');
+
+        function showStatus(type, text) {
+            statusEl.className = 'msg ' + type;
+            statusEl.textContent = text;
+        }
+
+        // Already logged in? Go straight to the dashboard.
+        (function () {
+            const user = getStoredUser();
+            const target = user && localStorage.getItem('token') ? dashboardPathFor(user.role) : null;
+            if (target) goTo(target);
+        })();
+
+        // Wake the backend up (free hosts sleep) and tell the user what's happening.
+        (async function warmUp() {
+            showStatus('info', 'Connecting to server… the first request can take up to a minute.');
+            try {
+                const res = await fetch(API_BASE_URL + '/health');
+                if (res.ok) {
+                    showStatus('ok', 'Server is online.');
+                    setTimeout(() => { statusEl.className = 'msg'; }, 2000);
+                    return;
+                }
+                showStatus('error', 'Server responded with an error (HTTP ' + res.status + ').');
+            } catch (e) {
+                showStatus('error', 'Cannot reach the server at ' + API_BASE_URL + '.');
+            }
+        })();
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.textContent = 'Logging in…';
+            showStatus('info', 'Signing in…');
+
+            const result = await login(
+                document.getElementById('email').value,
+                document.getElementById('password').value
+            );
+
+            if (!result.success) {
+                showStatus('error', result.message);
+                btn.disabled = false;
+                btn.textContent = 'Login';
+            }
+        });
+    </script>
+</body>
+</html>
